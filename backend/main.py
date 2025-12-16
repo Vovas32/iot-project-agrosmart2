@@ -71,7 +71,6 @@ def average_temperature():
             content = blob_client.download_blob().readall()
             data = json.loads(content)
 
-            # Используем только данные с ключом "temperature"
             if "temperature" in data:
                 temps.append(data["temperature"])
 
@@ -92,7 +91,6 @@ def low_soil_moisture_alert(threshold: int = 35):
             blob_client = container_client.get_blob_client(blob)
             data = json.loads(blob_client.download_blob().readall())
 
-            # Используем только данные с ключом "soilMoisture"
             if "soilMoisture" in data and data["soilMoisture"] < threshold:
                 alerts.append(data)
         return {"alerts": alerts}
