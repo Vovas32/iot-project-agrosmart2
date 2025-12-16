@@ -42,7 +42,7 @@ smartagro-iot/
 ### Clone the repository
 ```bash
 git clone https://github.com/Vovas32/iot-project-agrosmart2.git
-cd smartagro-iot
+cd iot-project-agrosmart2
 ```
 
 Create and activate a virtual environment
