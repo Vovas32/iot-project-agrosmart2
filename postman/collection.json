@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "205400ac-5aa0-4c75-a23a-a5101202d5a8",
+		"name": "SmartAgro IoT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50828164",
+		"_collection_link": "https://vosadchyi-6239201.postman.co/workspace/Volodymyr-Osadchyi's-Workspace~ca04b915-6bb2-4a44-8547-90d297890bea/collection/50828164-205400ac-5aa0-4c75-a23a-a5101202d5a8?action=share&source=collection_link&creator=50828164"
+	},
+	"item": [
+		{
+			"name": "Send Device Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"deviceId\": \"sensor-001\",\r\n  \"temperature\": 25.5,\r\n  \"soilMoisture\": 45,\r\n  \"timestamp\": \"2025-12-15T15:30:00\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/device/data",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"device",
+						"data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/device/data",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"device",
+						"data"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
