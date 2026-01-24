@@ -31,3 +31,7 @@ while True:
         print("Error:", e)
 
     time.sleep(5)
+    except Exception as e:
+        print("Error:", e)
+
+    time.sleep(5)
