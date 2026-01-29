@@ -20,15 +20,15 @@ app = FastAPI(
 )
 
 # --------------------
-# Azure Blob Storage (чёткая декларация)
+# Azure Blob Storage      vvvv  
 # --------------------
-AZURE_CONNECTION_STRING = "  "
+AZURE_CONNECTION_STRING = "  "    #  <---  KEY HERE
 CONTAINER_NAME = "iot-data"
 
 blob_service = BlobServiceClient.from_connection_string(AZURE_CONNECTION_STRING)
 container_client = blob_service.get_container_client(CONTAINER_NAME)
 
-# Попытка создать контейнер
+# Try to make a container 
 try:
     container_client.create_container()
     logger.info(f"Blob container '{CONTAINER_NAME}' created.")
