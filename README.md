@@ -4,9 +4,10 @@
 SmartAgro is an IoT system for smart agriculture. The system collects sensor data (soil moisture, temperature), stores it in the cloud (Azure Blob Storage), analyzes it, and automatically manages the irrigation system.
 
 ## Technologies
-- **Backend:** FastAPI (Python)  
+- **Backend:** FastAPI + AzureAppService (Python)  
 - **Device Simulator:** Python + requests  
-- **Cloud Storage:** Azure Blob Storage  
+- **Cloud Storage:** Azure Blob Storage
+- **MQTT Broker:** IoT Hub
 - **REST API**  
 - **Postman Collection** for API testing
 
@@ -78,11 +79,11 @@ The backend automatically creates the container if it does not exist.
 
 # 3.Running the Project
 ## 3.1 Backend
-```
-cd backend
-uvicorn main:app --reload
-```
+
+Via Azure App Service
+
 API will be available at: http://127.0.0.1:8000/docs
+https://smartagro-backend-defkexeugvbxbbg9.francecentral-01.azurewebsites.net/docs#/
 
 ## 3.2 Device Simulator
 ```
@@ -123,8 +124,8 @@ Other endpoints:
 * GET /api/device/average — average temperature
 * GET /api/device/command — irrigation command
 
-# 6. Architecture (C4 Model)
-## C1 — System Context (postman\docs\architecture-c1-context.png)
+# 6. Architecture (C Model)
+## C1 — System Context (postman\docs\architecture-C-diagram.png)
 User / Farmer: monitoring and controlling the system
 IoT Device: sensors and actuator
 SmartAgro IoT System: backend + storage
@@ -134,17 +135,6 @@ Connections:
 IoT Device → SmartAgro IoT System (POST sensor data / GET command)
 User → SmartAgro IoT System (monitoring / control)
 SmartAgro IoT System → Azure Cloud (data storage)
-
-## C2 — Container (postman\docs\architecture-c2-container.png)
-IoT Device Simulator: sensor + irrigation simulation
-Backend API (FastAPI): business logic, REST API, data processing, irrigation command
-Azure Blob Storage: JSON data storage
-User / Farmer: interacts via REST API
-
-Connections:
-IoT → Backend API (POST / GET)
-Backend API → Azure Blob Storage (SDK call, store telemetry)
-User → Backend API (GET data / alerts / statistics)
 
 # 7. Business Logic & User Stories
 Automatic Irrigation:
@@ -163,7 +153,7 @@ User Stories:
 
 * Using Blob Storage (Hot Tier)
 * Estimated cost: $1.15/month (demo scenario: 1 IoT device, small data volume)
-* Azure Pricing Calculator: https://azure.com/e/6605eb5e83084a668ff0801697f022c4
+* Azure Pricing Calculator: https://azure.com/e/1664bd9ab28748f1b22e30cf58361713
 
 # 9. Testing
 1) Start the backend and simulator
